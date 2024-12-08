@@ -31,7 +31,7 @@ export const Addproduct = () => {
             setName('')
             setPrice('')
             setUrl('')
-            axios.post('http://localhost:5000/api/products',product)
+            axios.post('https://mystore-pl30.onrender.com/api/products',product)
             setLoading(false)
             return toast.success('New Product is Added!', {
                 position: "bottom-center",
