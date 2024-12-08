@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import { connectDB } from './db.js';
+import mongoose from 'mongoose';
 import ProductsRoute from './Routes/ProductsRoute.js';
 import path from 'path';
 
@@ -25,10 +25,22 @@ app.get('*',(req,res)=>{
     res.sendFile(path.resolve(_dirname,'frontend','dist','index.html'))
 })
 
-app.listen(PORT,()=>{
-    connectDB();
-    console.log(`App is listening at http://localhost:${PORT}`)
-})
+
+const connectDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.MONGO_URI);
+
+        app.listen(PORT,()=>{
+            console.log(`Server running at ${PORT}`)
+            console.log('Connected to Database')
+        })
+    } catch (error) {
+        console.error(`Error: ${error.message}`);
+        process.exit(1);
+
+    }
+}
+connectDB();
 
 
 
