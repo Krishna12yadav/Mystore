@@ -12,7 +12,7 @@ export const Home = () => {
 
   useEffect(() => {
     setLoading(true);
-    axios.get('http://localhost:5000/api/products')
+    axios.get('https://mystore-pl30.onrender.com/api/products')
     .then((res)=>{
       setProducts(res.data.data)
       setLoading(false)
