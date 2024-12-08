@@ -24,8 +24,20 @@ app.get('*',(req,res)=>{
     res.sendFile(path.resolve(_dirname,'frontend','dist','index.html'))
 })
 
-app.listen(PORT,()=>{
+ const connectDB=async()=>{
+    try {
+        const conn=await mongoose.connect(process.env.MONGO_URI);
+        app.listen(PORT,()=>{
     connectDB();
     console.log(`App is listening at http://localhost:${PORT}`)
 })
+        console.log(`MongoDB Connected ${conn.connection.host}`)
+        
+    } catch (error) {
+        console.log(`Error ${error.message}`)
+        
+    }
+}
+
+
 //0DbpGUjca8b9YU3p 
