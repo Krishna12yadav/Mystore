@@ -28,7 +28,6 @@ app.get('*',(req,res)=>{
     try {
         const conn=await mongoose.connect(process.env.MONGO_URI);
         app.listen(PORT,()=>{
-    connectDB();
     console.log(`App is listening at http://localhost:${PORT}`)
 })
         console.log(`MongoDB Connected ${conn.connection.host}`)
@@ -38,6 +37,7 @@ app.get('*',(req,res)=>{
         
     }
 }
+ connectDB();
 
 
 //0DbpGUjca8b9YU3p 
