@@ -12,7 +12,7 @@ const navigate=useNavigate();
 
 const renderDelete=()=>{
 setLoading(true);
-axios.delete(`http://localhost:5000/api/products/${id}`)
+axios.delete(`https://mystore-pl30.onrender.com/api/products/${id}`)
 .then(()=>{
     navigate('/')
 })
