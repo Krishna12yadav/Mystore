@@ -26,7 +26,7 @@ export const EditProduct = () => {
         else {
             setErr(false)
             const product = { name, price, url }
-            axios.put(`http://localhost:5000/api/products/${id}`, product)
+            axios.put(`https://mystore-pl30.onrender.com/api/products/${id}`, product)
                 setName('')
                 setPrice('')
                 setUrl('')
@@ -48,7 +48,7 @@ export const EditProduct = () => {
 
     useEffect(() => {
         setLoading(true)
-        axios.get(`http://localhost:5000/api/products/${id}`)
+        axios.get(`https://mystore-pl30.onrender.com/api/products/${id}`)
             .then((res) => {
                 setName(res.data.data.name)
                 setPrice(res.data.data.price)
